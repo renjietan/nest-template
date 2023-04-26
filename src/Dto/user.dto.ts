@@ -14,7 +14,7 @@ export class UserDto {
   })
   @ApiProperty({
     type: String,
-    name: 'id',
+    name: 'username',
     required: true,
   })
   username: string;

@@ -5,11 +5,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { VersioningType } from '@nestjs/common';
 import * as session from 'express-session';
-import { logger } from './middleWave/logger/logger.middleWave';
-import { HttpCatchFilter } from './Filter/HttpCatchFilter';
-import TransformInterceptor from './interceptor/transform.interceptor';
-import ValidatePipe from './pipe/validate.pipe';
-
+import ValidatePipe from './utils/pipe/validate.pipe';
+import { HttpCatchFilter } from './utils/Filter/HttpCatchFilter';
+import TransformInterceptor from "./utils/interceptor/transform.interceptor"
+import { logger } from './utils/middleWave/logger/logger.middleWave';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
@@ -38,7 +37,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(TransformInterceptor)
 
   //NOTE(@date:2023-04-25 21:48:48 谭人杰): 6、添加pipe：验证前端传过来的参数
-  // app.useGlobalPipes(ValidatePipe)
+  app.useGlobalPipes(ValidatePipe)
 
   //NOTE(@date:2023-04-22 14:43:25 谭人杰): sessions
   app.use(

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserEntity } from 'src/CURD/entities/user.entity';
+import { UserEntity } from 'src/entities/user.entity';
 import * as svgCaptcha from 'svg-captcha';
 import { Repository } from 'typeorm';
 @Injectable()
