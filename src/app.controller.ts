@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
-import { UserDto } from './CURD/Dto/user.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './utils/auth/auth.service';
 import { isNoAuth } from './utils/decorator/jwt.decorator';
+import { UserDto } from './Dto/user.dto';
 
 @Controller({
   version: '1.0'
