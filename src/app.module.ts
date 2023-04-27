@@ -7,8 +7,8 @@ import { ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { StatusMonitorModule } from 'nest-status-monitor';
 import { configModule } from './utils/config/config.module';
-import { AuthModule } from './utils/auth/auth.module';
-import { JwtAuthGuard } from './utils/auth/auth.guard';
+import { AuthModule } from './modules/auth.module';
+import { JwtAuthGuard } from './utils/guard/auth.guard';
 import CommonConfig from "./utils/config/env/common";
 import { UserModule } from './modules/user.module';
 
