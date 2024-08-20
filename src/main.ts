@@ -17,11 +17,17 @@ async function bootstrap() {
     // 显示在URL中
     type: VersioningType.URI,
   });
+  
+  //  解决跨域
+  app.enableCors({
+    credentials: true,
+    origin: true,
+  });
 
   //NOTE(@date:2023-04-17 17:16:34 谭人杰): 2、添加swagger配置
   const options = new DocumentBuilder()
-    .setTitle('nest模版')
-    .setDescription('nest公用模版')
+    .setTitle('服务API')
+    .setDescription('大屏接口')
     .setVersion('1')
     .build();
   const document = SwaggerModule.createDocument(app, options);
