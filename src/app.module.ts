@@ -22,10 +22,10 @@ import { UserModule } from './modules/user.module';
       imports: [configModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
-        return configService.get('mysql');
+        return configService.get('sqlite');
       },
     }),
-    UserModule,
+    // UserModule,
     AuthModule,
   ],
   controllers: [AppController],

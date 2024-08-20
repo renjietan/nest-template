@@ -1,27 +1,20 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity("user")
 export class UserEntity {
-    @PrimaryGeneratedColumn({
-        comment: '用户ID'
-    })
-    id: string;
-    @Column({
-        type: 'varchar',
-        length: 12,
-        comment: '用户名称'
-    })
-    username: string;
+  @PrimaryGeneratedColumn({ type: "integer", name: "id" })
+  id: number;
 
-    @Column({
-        type: 'varchar',
-        length: 20,
-        comment: '用户密码'
-    })
-    password: string;
+  @Column("text", { name: "username", nullable: true })
+  username: string | null;
 
-    @CreateDateColumn({
-        type: 'timestamp'
-    })
-    createDate: string
+  @Column("text", { name: "password", nullable: true })
+  password: string | null;
+
+  @Column("text", {
+    name: "createDate",
+    nullable: true,
+    default: () => "strftime('%Y-%m-%d %H:%M:%S', 'now')",
+  })
+  createDate: string | null;
 }
