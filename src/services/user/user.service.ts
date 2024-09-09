@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RecordDto } from 'src/Dto/record.dto';
-import { RecordListDto } from 'src/Dto/recordList.dto';
-import { RecordEntyty } from 'src/entities/record.entity';
-import { UserEntity } from 'src/entities/user.entity';
 import * as svgCaptcha from 'svg-captcha';
 import { Between, Brackets, Repository } from 'typeorm';
+import { UserEntity } from './entities/user.entity';
+import { RecordEntyty } from './entities/record.entity';
+import { RecordDto } from './dto/record.dto';
+import { RecordListDto } from './dto/recordList.dto';
 @Injectable()
 export class UserService {
   // eslint-disable-next-line @typescript-eslint/no-empty-function

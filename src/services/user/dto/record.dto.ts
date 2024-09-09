@@ -1,5 +1,4 @@
 import { ApiProperty, OmitType, PickType } from '@nestjs/swagger';
-import { RecordEntyty } from 'src/entities/record.entity';
 
 export class RecordDto {
   @ApiProperty({

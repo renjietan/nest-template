@@ -7,10 +7,10 @@ import { ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { StatusMonitorModule } from 'nest-status-monitor';
 import { configModule } from './utils/config/config.module';
-import { AuthModule } from './modules/auth.module';
+import { AuthModule } from './services/auth/auth.module';
 import { JwtAuthGuard } from './utils/guard/auth.guard';
 import CommonConfig from "./utils/config/env/common";
-import { UserModule } from './modules/user.module';
+import { UserModule } from './services/user/user.module';
 
 @Module({
   imports: [

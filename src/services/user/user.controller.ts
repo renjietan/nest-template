@@ -9,12 +9,12 @@ import {
   Param,
   Query,
 } from '@nestjs/common';
-import { UserService } from '../services/user.service';
+import { UserService } from './user.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-import { RecordDto } from 'src/Dto/record.dto';
 import { isNoAuth } from 'src/utils/decorator/jwt.decorator';
-import { RecordListDto } from 'src/Dto/recordList.dto';
+import { RecordDto } from './dto/record.dto';
+import { RecordListDto } from './dto/recordList.dto';
 
 @Controller({
   version: '1.0',

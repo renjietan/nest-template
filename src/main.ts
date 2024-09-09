@@ -48,16 +48,15 @@ async function bootstrap() {
   //NOTE(@date:2023-04-22 14:43:25 谭人杰): sessions
   app.use(
     session({
-      secret: 'trj', // 生成服务端session 签名 可以理解为加盐
-      name: 'trj.sid', // 生成客户端cookie 的名字 默认 connect.sid
+      secret: 'node', // 生成服务端session 签名 可以理解为加盐
+      name: 'nest', // 生成客户端cookie 的名字 默认 connect.sid
       rolling: true, // 在每次请求时强行设置 cookie，这将重置 cookie 过期时间(默认:false)
       //设置返回到前端 key 的属性，默认值为{ path: ‘/’, httpOnly: true, secure: false, maxAge: null }。
-      //
       resave: false, 
       saveUninitialized: true,
       cookie: { maxAge: null },
     }),
   );
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();
