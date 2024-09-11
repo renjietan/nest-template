@@ -10,7 +10,7 @@ import { configModule } from './utils/config/config.module';
 import { AuthModule } from './services/auth/auth.module';
 import { JwtAuthGuard } from './utils/guard/auth.guard';
 import CommonConfig from "./utils/config/env/common";
-import { UserModule } from './services/user/user.module';
+import { MailModule } from './services/mail/mail.module';
 
 @Module({
   imports: [
@@ -25,11 +25,12 @@ import { UserModule } from './services/user/user.module';
         return configService.get('sqlite');
       },
     }),
-    // UserModule,
+    MailModule,
     AuthModule,
   ],
   controllers: [AppController],
   providers: [
+    //注册邮箱服务
     AppService,
     {
       provide: APP_GUARD,

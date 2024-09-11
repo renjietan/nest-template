@@ -32,8 +32,6 @@ export class UserController {
   })
   @Post('record')
   async addRecord(@Query() param: RecordDto) {
-    console.log(param);
-    
     return await this.userService.addRecord(param);
   }
 

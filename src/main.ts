@@ -10,7 +10,9 @@ import { HttpCatchFilter } from './utils/Filter/HttpCatchFilter';
 import TransformInterceptor from "./utils/interceptor/transform.interceptor"
 import { logger } from './utils/middleWave/logger/logger.middleWave';
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    cors: true
+  });
 
   //NOTE(@date:2023-04-17 17:13:26 谭人杰): 1、开启版本号
   app.enableVersioning({
