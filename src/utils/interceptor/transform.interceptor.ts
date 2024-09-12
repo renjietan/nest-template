@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import CommonConfig from "../config/env/common";
+import CommonConfig from "../../config/env/common";
 import { parseTime } from 'src/utils';
 
 interface Response<T> {

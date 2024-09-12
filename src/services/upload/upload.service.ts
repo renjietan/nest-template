@@ -4,7 +4,7 @@ import { UpdateUploadDto } from './dto/update-upload.dto';
 
 @Injectable()
 export class UploadService {
-  create(createUploadDto: CreateUploadDto) {
+  emailFile(createUploadDto: CreateUploadDto) {
     return 'This action adds a new upload';
   }
 

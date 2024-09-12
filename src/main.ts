@@ -7,11 +7,12 @@ import { VersioningType } from '@nestjs/common';
 import * as session from 'express-session';
 import ValidatePipe from './utils/pipe/validate.pipe';
 import { HttpCatchFilter } from './utils/Filter/HttpCatchFilter';
-import TransformInterceptor from "./utils/interceptor/transform.interceptor"
+import TransformInterceptor from './utils/interceptor/transform.interceptor';
 import { logger } from './utils/middleWave/logger/logger.middleWave';
+import { join } from 'path';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    cors: true
+    cors: true,
   });
 
   //NOTE(@date:2023-04-17 17:13:26 谭人杰): 1、开启版本号
@@ -19,7 +20,13 @@ async function bootstrap() {
     // 显示在URL中
     type: VersioningType.URI,
   });
-  
+
+  // NOTE(2024-09-11 16:33:36 谭人杰): 添加静态目录
+  app.useStaticAssets(join(process.cwd(), 'assets'), {
+    // 添加路径前缀
+    prefix: '/assets',
+  });
+
   //  解决跨域
   app.enableCors({
     credentials: true,
@@ -39,13 +46,13 @@ async function bootstrap() {
   app.use(logger);
 
   //NOTE(@date:2023-04-21 13:24:57 谭人杰): 4、添加错误Filter
-  app.useGlobalFilters(new HttpCatchFilter());  
+  app.useGlobalFilters(new HttpCatchFilter());
 
   //NOTE(@date:2023-04-25 21:03:32 谭人杰): 5、数据统一返回格式
-  app.useGlobalInterceptors(TransformInterceptor)
+  app.useGlobalInterceptors(TransformInterceptor);
 
   //NOTE(@date:2023-04-25 21:48:48 谭人杰): 6、添加pipe：验证前端传过来的参数
-  app.useGlobalPipes(ValidatePipe)
+  app.useGlobalPipes(ValidatePipe);
 
   //NOTE(@date:2023-04-22 14:43:25 谭人杰): sessions
   app.use(
@@ -54,7 +61,7 @@ async function bootstrap() {
       name: 'nest', // 生成客户端cookie 的名字 默认 connect.sid
       rolling: true, // 在每次请求时强行设置 cookie，这将重置 cookie 过期时间(默认:false)
       //设置返回到前端 key 的属性，默认值为{ path: ‘/’, httpOnly: true, secure: false, maxAge: null }。
-      resave: false, 
+      resave: false,
       saveUninitialized: true,
       cookie: { maxAge: null },
     }),
