@@ -45,12 +45,12 @@ export class UploadController {
     @Param() query: CreateUploadDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
-    const assets_path = this.configService.get('assets_path')
-    const ext = extname(file.originalname)
-    const filename = `${new Date().getTime()}-${ext}`
-    const stream = createWriteStream(join(assets_path, filename))
-    stream.write(file.buffer)
-    stream.close()    
+    // const assets_path = this.configService.get('assets_path')
+    // const ext = extname(file.originalname)
+    // const filename = `${new Date().getTime()}-${ext}`
+    // const stream = createWriteStream(join(assets_path, filename))
+    // stream.write(file.buffer)
+    // stream.close()    
     return '上传成功';
   }
 

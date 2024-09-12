@@ -107,6 +107,10 @@ export class MailService {
             subject: 'Hello!', // subject line
             text: 'Hello world!', // plain text body
             html: '<p>Hello world!</p>', // HTML body
+            attachments: [{
+              filename: '1.txt',
+              path: 'http://localhost:3001/assets/1726125440364-.md'
+            }]
           });
           console.log('=======client Send=========');
           console.dir(send, { depth: null, color: true });

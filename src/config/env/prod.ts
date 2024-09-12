@@ -1,4 +1,8 @@
+import { join } from "path";
+
 export default {
+  assets_path: 'src/assets',
+  email_file_path: 'dist/src/email_files'
   // mysql: {
   //   type: 'mysql', //数据库类型
   //   username: 'root', //账号

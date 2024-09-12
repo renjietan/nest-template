@@ -10,6 +10,7 @@ import { HttpCatchFilter } from './utils/Filter/HttpCatchFilter';
 import TransformInterceptor from './utils/interceptor/transform.interceptor';
 import { logger } from './utils/middleWave/logger/logger.middleWave';
 import { join } from 'path';
+import config from './config/env/index';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: true,
@@ -22,9 +23,15 @@ async function bootstrap() {
   });
 
   // NOTE(2024-09-11 16:33:36 谭人杰): 添加静态目录
-  app.useStaticAssets(join(process.cwd(), 'assets'), {
+  app.useStaticAssets(config().assets_path, {
     // 添加路径前缀
     prefix: '/assets',
+  });
+
+  // NOTE(2024-09-12 15:42:48 谭人杰): 邮件附件保存位置
+  app.useStaticAssets(config().email_file_path, {
+    // 添加路径前缀
+    prefix: '/email',
   });
 
   //  解决跨域
